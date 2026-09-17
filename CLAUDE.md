@@ -64,7 +64,8 @@ agent doing everything. These roles are defined in `ROLES.md`.
 - `docs/` — intent statement, requirements, and the live gap list. Start
   here to understand *what* is being built.
 - `docs/ADRs` — The home for Architectural Decision Records
-- `architecture_reviews` — A place for raw notes that identify review findings to be addressed. The findings are addressed by ADRs
+- `docs/architecture_reviews` — A place for raw notes that identify review findings to be addressed. The findings are addressed by ADRs
+- `docs/intent_reviews` — Point-in-time reviews of `docs/Intent.md`, produced by running `prompts/IntentReviewPrompt.txt`. One file per review pass; the review itself doesn't change `Intent.md`, it just informs the next edit to it.
 - `history/` — An unstructured collection of artifacts that support an
   understanding of `how` and `why` this project has reached its current state.
   The retired `testAgent` prototype (OCR+LLM proof of concept)
@@ -86,9 +87,11 @@ agent doing everything. These roles are defined in `ROLES.md`.
 - `product/review/` — code reviews live here
 - `product/changelog/` — product change history.
 - `templates/` —  this is a collection of files to be used as templates to create process documents 
-- `prompts/` —  this is a library of useful prompts. It's not yet part of the process
-  and may only be for Jeff's reference.
+- `prompts/` — the home for process-level prompts (e.g. `IntentReviewPrompt.txt`). Now part of
+  the process, not just Jeff's reference material — see `docs/intent_reviews/` for where its output lands.
 - `code_review/` —  a place for process-related specs for code reviews, specifically the `pyproject.toml` file
+- `private/` — Jeff's personal scratchpad. Not part of the process; nothing here should be assumed to
+  reflect a process decision, and this repo's process docs should never be written to expect this folder to exist.
 
 Every project needs at least the following artifacts, stored in the following locations:
 

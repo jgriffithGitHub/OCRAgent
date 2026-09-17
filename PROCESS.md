@@ -10,6 +10,13 @@ statement of "I'm building a car." is not sufficient, but "I'm building a car th
 5 gallon tank of fuel, has supplemental solar power, holds one person and is typically used to commute less than 50 miles one way." is a better
 start. In this example, the Intent statement will not cite all the related regulations; it can assume these will be added by the process.
 
+Before -- and any time after -- Intent.md is edited, it can be reviewed against `prompts/IntentReviewPrompt.txt`,
+which checks it for clarity, vision/implementation separation, identified users/goals/constraints, whether it
+actually turns business needs into software direction, and ambiguity. This review does not change `Intent.md`
+itself; it produces a dated report under `docs/intent_reviews/` that the Development Manager uses to decide the
+next edit. It's optional but cheap, and worth running again after any substantive rewrite of `Intent.md`, not just
+once at the start.
+
 Given the Intent document, several rounds of negotiation occur that refine it until a coherent set of requirements can be produced. 
 The requirements are written using the `ProductRequirements_Template.md` as the format. It is expected that this document will evolve throughout
 the development process as it is not possible to see all the requirements during initial review and requirements will change as people begin
@@ -42,7 +49,7 @@ user will be able to provide a recipient's name and address. if the related arch
 single page web apps, a feature might address this requirements by describing a web app to accept this data.
 
 After the features are defined (and when they change) the process must review how the architecture features and product features implement all requirements to
-look for gaps, overlaps and conflicts. Architecture reviews are documented using the `Architecture_Review_Template.md` and written to the `architecture_reviews/` directory.
+look for gaps, overlaps and conflicts. Architecture reviews are documented using the `Architecture_Review_Template.md` and written to the `docs/architecture_reviews/` directory.
 The issues to be resolved are:
 - gaps: has the architecture assumed data security would handled by the database but the database assumed that any user that had access was authorized or has one 
   feature implemented part of a requirement and a second feature has implemented part of requirement, but the two features together don't implement the full requirement

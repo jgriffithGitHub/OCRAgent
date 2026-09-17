@@ -1,7 +1,0 @@
-Without writing code, review the listed specification.
-List any missing details, contradictions, risky assumptions or unclear requirements.
-Do not implement anything at this time.
-
-Specification ID:
-
-Return missing details, contradictions, open questions, safe assumptions (if any), suggestions.

@@ -180,3 +180,7 @@ package-lock.json
 history/testAgent/pdf_inputs/
 history/testAgent/outputs/
 history/testAgent/logs/
+
+# Jeff's personal scratchpad -- old ideas, things being tried out, not part
+# of the process and never meant to reach the repo.
+private/

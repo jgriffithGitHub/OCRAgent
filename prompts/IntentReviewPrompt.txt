@@ -1,0 +1,33 @@
+Please review the "docs/Intent.md" against the following criteria and provide a report in the following format.
+
+# Engineering Intent Document Review
+## Overall Assessment
+
+## 1. Does It Express the Idea Clearly?
+### Strengths
+### Weaknesses
+
+## 2. Does It Separate Vision from Implementation?
+### Strengths
+### Weaknesses
+
+## 3. Does It Identify Users, Goals, and Constraints Clearly?
+### Users
+### Goals
+### Constraints
+
+## 4. Does It Turn Business Needs into Software Direction?
+### Strengths
+### Weaknesses
+
+## 5. Does It Avoid Ambiguous Project Requests?
+### Specific Ambiguities
+### What Works
+
+---
+
+## Summary of Recommendations
+
+| Priority | Recommendation |
+|---|---|
+

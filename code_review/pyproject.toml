@@ -1,0 +1,81 @@
+# ruff configuration for OCRAgent.
+#
+# Scope: this file exists to hold ruff's config only (per CLAUDE.md's Python
+# Coding Standards: "Config lives in code_review/pyproject.toml — don't
+# restate indentation, quotes, or import order [in CLAUDE.md]"). It is not a
+# package manifest -- there's no [project] or [build-system] table here. If
+# this project later adopts a dependency manager that also uses pyproject.toml
+# (uv, poetry, etc.), those tables get added alongside this one, not instead
+# of it.
+#
+# Run with:
+#   ruff format .      -- applies formatting (quotes, indentation, line wraps)
+#   ruff check --fix .  -- applies lint fixes (unused imports, naming, etc.)
+# Both read this file automatically from the repo root -- no --config flag
+# needed as long as code_review/pyproject.toml is really the file ruff
+# should be discovering (see the note sent alongside this file).
+
+[tool.ruff]
+# Match this to whatever Python version product/src/ actually ends up
+# validated against (see CLAUDE.md's Environment section -- currently
+# "not yet re-validated for src/"). 3.13 is what the retired testAgent
+# prototype ran on; it's the only real data point right now, not a
+# confirmed decision.
+target-version = "py313"
+
+# Ruff's own default (matches Black). CLAUDE.md doesn't state a line-length
+# standard, so this is picking the tool default rather than inventing a
+# number -- change it here if you want something else, and it'd be worth a
+# one-line note in CLAUDE.md's Python Coding Standards so it's not just
+# implicit in this file.
+line-length = 88
+
+# Paths ruff should never touch: the retired prototype (Standing Rule 4 says
+# don't extend it -- that includes not silently reformatting it), and
+# anything owned by a package manager rather than by us.
+extend-exclude = [
+    "history/testAgent",
+    "node_modules",
+    ".venv",
+    "venv",
+    "venv.bak",
+]
+
+[tool.ruff.lint]
+# Each group below is tied to a specific line in CLAUDE.md's Python Coding
+# Standards, so the mapping stays visible instead of just being "the usual
+# ruff defaults":
+select = [
+    "E", "W",   # pycodestyle -- general style baseline
+    "F",        # pyflakes -- undefined names, unused imports/vars
+    "I",        # isort -- import sorting/grouping
+    "N",        # pep8-naming -- snake_case/PascalCase/UPPER_SNAKE (Naming)
+    "UP",       # pyupgrade -- flags syntax older than target-version
+    "B",        # bugbear -- common bug-prone patterns
+    "PTH",      # flake8-use-pathlib -- flags os.path / string paths (Paths: always pathlib.Path)
+    "BLE",      # flake8-blind-except -- flags bare except:/except Exception: (Error handling)
+    "TRY",      # tryceratops -- broader exception-handling hygiene (re-raise vs. silent swallow)
+    "T20",      # flake8-print -- flags bare print() (Error handling: use logging, not print)
+    "LOG", "G", # flake8-logging / logging-format -- logging used correctly
+    "ANN",      # flake8-annotations -- type hints required (Type hints)
+]
+
+# CLAUDE.md's type-hints rule is explicitly "new functions, not retrofitted
+# onto existing code." Normally that's hard for a linter to express -- but
+# product/src/ is currently empty, so turning ANN on now costs nothing (there
+# is no existing code yet to retrofit) and every function written from here
+# on is "new" by definition. If ANN ever starts flagging code you don't want
+# to touch, that's the moment to add a per-file-ignore for it, not to drop
+# the rule globally.
+
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+# Placeholder -- nothing needs an exception yet. Example of the pattern for
+# later, if e.g. tests end up wanting looser naming or missing return-type
+# annotations on test functions:
+# "tests/**" = ["ANN201", "N802"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

@@ -17,6 +17,7 @@ desktop.ini
 # e.g. history/testAgent/poppler-26.07.0/ - a full Poppler-for-Windows build
 # (DLLs, .lib, headers, cMap tables) bundled alongside testAgent for pdf2image.
 poppler-*/
+node_modules/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -167,6 +168,10 @@ tempCodeRunnerFile.py
 
 # PyPI configuration file
 .pypirc
+
+# ruff
+package.json
+package-lock.json
 
 # --- OCRAgent: sample/test PDFs and generated run artifacts (kept out of GitHub) ---
 # Confirmed 2026-09-14: mostly synthetic, but one sample (a toll receipt) is a

@@ -129,3 +129,35 @@ maintainer would want to know about, independent of what any individual task's o
 
 `tasks/Task-Index.md` is maintained by the Technical Supervisor, not generated once: it's updated whenever a task is
 created or its status changes, so it stays a live summary rather than a snapshot.
+
+## Known Process Gaps
+
+Mirrors `docs/Requirements.md`'s own gap list, but for gaps in the *process* itself rather than the product. Each
+entry gets a `PG-xxxx` ID. Logged here so an idea raised mid-session isn't lost before anyone decides whether to
+act on it -- an entry sitting here is not a commitment to build it, just a flagged, findable open item.
+
+### PG-0001 -- No elicitation step between Intent.md and Requirements.md
+
+`docs/Intent.md` is meant to stay at "I have a good idea, not yet a spec" altitude. In practice, three rounds of
+running it through `prompts/IntentReviewPrompt.txt` and revising pulled a lot of genuinely spec-level detail
+straight into `Intent.md` itself -- confidence-score math with worked examples, PII handling, a performance number,
+an input-format decision. None of that is wrong to have written down, but `Intent.md`'s fixed section structure has
+no natural home for that level of detail, so it either gets awkwardly folded into a section that wasn't meant to
+hold it, or it's lost until someone remembers to carry it into `Requirements.md` by hand.
+
+The root cause: `IntentReviewPrompt.txt` is purely evaluative -- it finds weaknesses (unclear, ambiguous,
+vision/implementation mixed) but doesn't elicit the missing specifics needed to actually support Requirements.md
+generation. A concrete symptom Jeff raised: there's no good place in `Intent.md` for something like real user
+interface capabilities, if a future project needs that. The process has no step that systematically walks an
+intent statement forward into requirements-ready detail; right now that either happens by accident (as it did
+here) or doesn't happen until someone drafts `Requirements.md` from scratch.
+
+**Proposed direction (Jeff's, not yet decided or built):** expand `prompts/IntentReviewPrompt.txt` -- or add a
+companion prompt alongside it -- into something closer to a "flesh out this intent" step: generative, not just
+evaluative, built specifically to produce the detail `docs/Requirements.md`'s `ProductRequirements_Template.md`
+actually needs. Open questions this would raise if picked up: does it replace `IntentReviewPrompt.txt` or run
+after it; does its output still live in `docs/intent_reviews/` or does fleshed-out content move into `Intent.md`
+directly; and does `Intent.md`'s section structure need to grow to hold what this step produces, or does the new
+prompt's output become the actual first draft of `Requirements.md` instead.
+
+Status: open, not started.

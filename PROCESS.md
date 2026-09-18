@@ -169,4 +169,16 @@ after it; does its output still live in `docs/intent_reviews/` or does fleshed-o
 directly; and does `Intent.md`'s section structure need to grow to hold what this step produces, or does the new
 prompt's output become the actual first draft of `Requirements.md` instead.
 
-Status: open, not started.
+**Decided approach (2026-09-18):** rather than design the missing intermediate document up front, discover it
+empirically. Attempt to draft `Requirements.md` now from the current `Intent.md` and `ProductRequirements_Template.md`;
+treat friction in that attempt as signal, not failure. Continue refining `Intent.md` as needed in the meantime, even
+though holding this level of detail isn't really its intended role -- it's what exists. Once `Requirements.md`
+reaches a genuinely good, clear state, diff `Intent.md` v1 against the version in place at that point to derive
+concretely what the missing step needs to elicit and produce.
+
+This also explains the "Goals aren't enumerated in Intent.md" weakness that showed up unresolved across all three
+Intent Review passes: `Intent.md` is written by someone outside the process, at "idea" altitude, with no reason to
+think in Goals/Users/Constraints vocabulary unless the presenter happens to. That's evidence the gap is structural,
+not a defect in any one draft of `Intent.md`.
+
+Status: open, approach chosen, not started.

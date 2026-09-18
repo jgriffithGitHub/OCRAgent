@@ -17,6 +17,15 @@ itself; it produces a dated report under `docs/intent_reviews/` that the Develop
 next edit. It's optional but cheap, and worth running again after any substantive rewrite of `Intent.md`, not just
 once at the start.
 
+Commit `Intent.md` before running the review, not after. A review report only means something in relation to the
+exact document it looked at; if `Intent.md` keeps changing in the working tree while reports pile up in
+`docs/intent_reviews/`, the link between a given report and the version it reviewed exists only in whoever's memory
+ran the review -- and that link is lost the moment someone forgets, or the next edit overwrites the reviewed version
+before it's committed. (This happened during the process's first real test run: a second revision of `Intent.md` was
+reviewed, then replaced by a third revision before either was committed, so the second revision itself is no longer
+recoverable from git -- only the report describing its weaknesses survives.) Referencing the commit SHA in the
+review report closes that gap cheaply.
+
 Given the Intent document, several rounds of negotiation occur that refine it until a coherent set of requirements can be produced. 
 The requirements are written using the `ProductRequirements_Template.md` as the format. It is expected that this document will evolve throughout
 the development process as it is not possible to see all the requirements during initial review and requirements will change as people begin
